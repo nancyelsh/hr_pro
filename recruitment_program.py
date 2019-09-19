@@ -14,7 +14,7 @@ print("""Skills:
 6- Eating""")
 cv['skills'].append(input("Choose a skill from above by entering its number: "))
 cv['skills'].append(input("Choose another skill from above by entering its number: "))
-if int(cv['age']) > 25 and int(cv['age']) < 40 and int(cv['experience']) > 3 and 'Python' in skills:
+if int(cv['age']) > 25 and int(cv['age']) < 40 and int(cv['experience']) > 3 and '1' in cv["skills"]:
     print("You have been accepted, {}!".format(cv['name']))
 else:
     print("We're sorry, {}.".format(cv['name']))
