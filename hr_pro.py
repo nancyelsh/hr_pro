@@ -10,27 +10,27 @@ class Employee:
     self.employment_date = employment_date
     #year,month,day = employment_date(',')
   def get_working_years(self):
-    return today.year - employment_date
+    return today.year - self.employment_date
     #return today.year - year - ((today.month, today.day) < (month, day))
   def __str__(self):
-    return "Name: {self.name}, Age: {self.age}, Salary: {self.salary}, Working years: {get_working_years(self)}".format(self = self)
+    return "Name: {self.name}, Age: {self.age}, Salary: {self.salary}, Working years: {}".format(self.get_working_years(), self = self)
 
 class Manager:
   def __init__(self, name, age, salary, employment_date, bonus_percentage):
     self.name = name
     self.age = age
     self.salary = salary
-    self.bonus_percentage = bonus_percentage
     # Enter date in (year,month,date) format
     self.employment_date = employment_date
     #year,month,day = employment_date(',')
+    self.bonus_percentage = bonus_percentage
   def get_working_years(self):
-    return today.year - employment_date
+    return today.year - self.employment_date
     #return today.year - year - ((today.month, today.day) < (month, day))
   def get_bonus(self):
-    return bonus_percentage*salary
+    return self.bonus_percentage*self.salary
   def __str__(self):
-    return "Name: {self.name}, Age: {self.age}, Salary: {self.salary}, Working years: {get_working_years(self), Bonus: {get_bonus(self)}".format(self = self)
+    return "Name: {self.name}, Age: {self.age}, Salary: {self.salary}, Working years: {}, Bonus: {}".format(self.get_working_years(), self.get_bonus(), self = self)
   
 employees = []
 managers = []
@@ -49,20 +49,39 @@ while option != '5':
     print("Employees\n")
     for employee in employees:
       print(employee)
+    print("-----------------")
+    print("""Welcome to HR Pro 2019
+      Options:
+        1. Show Employees
+        2. Show Managers
+        3. Add an Employee
+        4. Add a Manager
+        5. Exit\n""")
+    option = input("What would you like to do? ")
   elif option == '2':
     print("-----------------")
     print("Managers\n")
     for manager in managers:
-      print(manageryy)
+      print(manager)
+    print("-----------------")
+    print("""Welcome to HR Pro 2019
+      Options:
+        1. Show Employees
+        2. Show Managers
+        3. Add an Employee
+        4. Add a Manager
+        5. Exit\n""")
+    option = input("What would you like to do? ")
   elif option == '3':
     print("-----------------")
     name = input("Name: ")
     age = input("Age: ")
     salary = input("Salary: ")
-    year = input("Employment year: ")
-    employees.append(Employee(name, int(age), int(salary), int(year)))
+    employment_date = input("Employment year: ")
+    employees.append(Employee(name, int(age), int(salary), int(employment_date)))
 #    employees.append(new_employee)
     print("Employee added successfully")
+    print("-----------------")
     print("""Welcome to HR Pro 2019
       Options:
         1. Show Employees
@@ -76,11 +95,12 @@ while option != '5':
     name = input("Name: ")
     age = input("Age: ")
     salary = input("Salary: ")
+    employment_date = input("Employment year: ")
     bonus = input("Bonus percentage: ")
-    year = input("Employment year: ")
-    managers.append(Manager(name, int(age), int(salary), float(bonus), int(year)))
+    managers.append(Manager(name, int(age), int(salary), int(employment_date), float(bonus)))
 #    managers.append(new_manager)
     print("Manager added successfully")
+    print("-----------------")
     print("""Welcome to HR Pro 2019
       Options:
         1. Show Employees
@@ -89,7 +109,6 @@ while option != '5':
         4. Add a Manager
         5. Exit\n""")
     option = input("What would you like to do? ")
-
 #    new_employee = Employee(input("Add an employee in the format (name, age, salary, employment date),\nex: ('Nancy', 25, 600, (2019,2,5))"))
 #      employees.append(new_employee)
 #  elif option == '4':
